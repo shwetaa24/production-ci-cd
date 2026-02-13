@@ -3,3 +3,4 @@ gunicorn==22.0.0
 pytest==7.4.3
 flake8==6.1.0
 wheel==0.46.2
+setuptools==75.0.0
