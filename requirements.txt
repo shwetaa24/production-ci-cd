@@ -1,7 +1,5 @@
-flask==3.0.0
-gunicorn==22.0.0
-pytest==7.4.3
-flake8==6.1.0
-setuptools>=78.1.1
-wheel>=0.46.2
+flask
+gunicorn
+setuptools>=79.0.1
+wheel>=0.46.3
 jaraco.context>=6.1.0
