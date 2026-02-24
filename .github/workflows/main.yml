@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# Mam's Point 1.2: Added a global variable for the image name
+env:
+  DOCKER_IMAGE: shwetaajadhav/flask-app:latest
+
 jobs:
   Quality-Check:
     runs-on: ubuntu-latest
@@ -45,17 +49,21 @@ jobs:
         with:
           context: .
           push: false 
-          tags: shwetaajadhav/flask-app:latest
+          # Using the variable here
+          tags: ${{ env.DOCKER_IMAGE }}
           load: true 
 
       - name: Security Scan (Trivy)
-        uses: aquasecurity/trivy-action@master
+        # Mam's Point 1.4: Pinned to a stable version v0.20.0 instead of @master
+        uses: aquasecurity/trivy-action@v0.20.0
         with:
-          image-ref: 'shwetaajadhav/flask-app:latest'
+          # Using the variable here
+          image-ref: ${{ env.DOCKER_IMAGE }}
           format: 'table'
           exit-code: 1
           severity: 'CRITICAL,HIGH'
 
       - name: Push to Docker Hub
         if: success()
-        run: docker push shwetaajadhav/flask-app:latest
+        # Using the variable here
+        run: docker push ${{ env.DOCKER_IMAGE }}
