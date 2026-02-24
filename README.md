@@ -14,4 +14,4 @@ This repository provides a production-ready CI/CD template using GitHub Actions,
 - Step-by-step Setup Guide
 
 ---
-*Created for the DevOps Challenge - Build, Ship, Sell.*
+*Created for the DevOps Challenge - Build, Ship, Sell.* 
